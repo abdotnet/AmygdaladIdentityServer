@@ -1,0 +1,15 @@
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\bin\Debug\net5.0\Amygdalab.Core.deps.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\bin\Debug\net5.0\Amygdalab.Core.runtimeconfig.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\bin\Debug\net5.0\Amygdalab.Core.runtimeconfig.dev.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\bin\Debug\net5.0\Amygdalab.Core.dll
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\bin\Debug\net5.0\ref\Amygdalab.Core.dll
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\bin\Debug\net5.0\Amygdalab.Core.pdb
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.AssemblyInfoInputs.cache
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.AssemblyInfo.cs
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.csproj.CoreCompileInputs.cache
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.dll
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\ref\Amygdalab.Core.dll
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.pdb
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.genruntimeconfig.cache
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Core\obj\Debug\net5.0\Amygdalab.Core.csprojAssemblyReference.cache
