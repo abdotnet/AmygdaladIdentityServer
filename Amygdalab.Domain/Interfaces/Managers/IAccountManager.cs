@@ -12,6 +12,6 @@ namespace Amygdalab.Domain.Interfaces.Managers
 {
     public interface IAccountManager
     {
-        Task<ApiResponse<RegisterResponse>> CreateUser(RegisterRequest model, string roleName= Constants.RoleTypes.Worker);
+        Task<ApiResponse<RegisterResponse>> CreateUser(RegisterRequest model);
     }
 }

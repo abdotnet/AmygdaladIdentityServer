@@ -24,7 +24,7 @@ namespace Amygdalab.Web.Controllers.V1
     [Route("api/v{version:apiVersion}/account")]
     [ApiVersion("1")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseController
     {
 
         private readonly IUnitOfWork _unitOfWork;
@@ -37,29 +37,6 @@ namespace Amygdalab.Web.Controllers.V1
 
         }
 
-        [ProducesResponseType(typeof(ApiResponse<RegisterResponse>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ApiResponse<RegisterResponse>), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ApiResponse<RegisterResponse>), StatusCodes.Status500InternalServerError)]
-        [Route("admin")]
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterRequest model)
-        {
-            Log.Information("Admin registration process started.");
-            try
-            {
-                var response = await _accountManager.CreateUser(model, Constants.RoleTypes.Admin);
-
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-                var error = ApiResponse<RegisterResponse>.Error(null, message: ex.Message);
-                return Ok(error);
-            }
-
-        }
 
         /// <summary>
         /// 
@@ -78,7 +55,7 @@ namespace Amygdalab.Web.Controllers.V1
 
             try
             {
-                var response = await _accountManager.CreateUser(model, Constants.RoleTypes.Worker);
+                var response = await _accountManager.CreateUser(model);
 
                 return Ok(response);
             }

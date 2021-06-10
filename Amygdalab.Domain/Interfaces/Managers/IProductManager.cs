@@ -12,6 +12,8 @@ namespace Amygdalab.Domain.Interfaces.Managers
 {
     public interface IProductManager
     {
+        Task<ApiResponse<Pager<ProductHistoryResponse>>> GetAllProductHistoryAsync(SearchModel model);
+       // Task<ApiResponse<Pager<ProductResponse>>> GetAllProductHistoryAsync(SearchModel model);
         Task<ApiResponse<Pager<ProductResponse>>> GetAllProductAsync(SearchModel model);
         Task<ApiResponse<ProductResponse>> GetProductAsync(long productId);
         Task<ApiResponse<ProductResponse>> CreateProductAsync(ProductRequest model, long createdBy);

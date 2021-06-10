@@ -1,0 +1,12 @@
+
+<app-nav></app-nav>
+
+<div *ngIf="!userLoggedIn">
+<router-outlet></router-outlet>
+</div>
+
+<div *ngIf="userLoggedIn">
+<router-outlet></router-outlet>
+</div>
+
+<ngx-spinner></ngx-spinner>

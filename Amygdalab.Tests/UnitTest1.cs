@@ -10,5 +10,20 @@ namespace Amygdalab.Tests
         {
 
         }
+
+        private void TestAuthentication()
+        {
+
+        }
+
+        private void TestProductController()
+        {
+
+        }
+
+        private void TestProductServicesAndManagers()
+        {
+
+        }
     }
 }

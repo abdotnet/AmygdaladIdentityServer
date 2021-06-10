@@ -111,3 +111,11 @@ C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\obj\Debug\net5.0\Amygdalab.W
 C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\obj\Debug\net5.0\Amygdalab.Web.genruntimeconfig.cache
 C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\IdentityModel.AspNetCore.OAuth2Introspection.dll
 C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\IdentityServer4.AccessTokenValidation.dll
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\angular.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\package-lock.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\package.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\tsconfig.app.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\tsconfig.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\tsconfig.spec.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\report.20210607.115156.30520.0.001.json
+C:\Users\Abuba\source\repos\Amygdalab\Amygdalab.Web\bin\Debug\net5.0\clientapp\report.20210608.073448.18236.0.001.json

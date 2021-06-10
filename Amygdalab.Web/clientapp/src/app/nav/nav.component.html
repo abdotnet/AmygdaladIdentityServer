@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Amydalad  </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/dashboard" href="#">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" *ngIf="(role | async) == 'Worker'"  routerLink='/product'>Create Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" *ngIf="(role | async) == 'Worker'" routerLink='/list-product'>List Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" *ngIf="(role | async) == 'Admin'" routerLink='/product-history'>List Product History</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <button class="btn btn-secondary my-2 my-sm-0" *ngIf="role | async"  type="submit">Name: {{cName | async}}   Role: {{role | async}}</button>
+        <button class="btn btn-secondary my-2 my-sm-0" *ngIf="role | async" (click)="Logout()" type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>

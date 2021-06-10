@@ -29,6 +29,16 @@ namespace Amygdalab.Domain.Managers
             _settings = setting.Value;
         }
 
+
+        public async Task<ApiResponse<Pager<ProductHistoryResponse>>> GetAllProductHistoryAsync(SearchModel model)
+        {
+            var productHistoryUow = await _unitOfWork.ProductHistory.GetAllProductHistoryAsync(model);
+
+            var ProductHistories = _mapper.Map<Pager<ProductHistoryResponse>>(productHistoryUow);
+
+            return ApiResponse<Pager<ProductHistoryResponse>>.Successful(ProductHistories);
+        }
+
         public async Task<ApiResponse<Pager<ProductResponse>>> GetAllProductAsync(SearchModel model)
         {
             var productUow = await _unitOfWork.Product.GetAllProductAsync(model);

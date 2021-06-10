@@ -26,7 +26,7 @@ namespace Amygdalab.Domain.Managers
             _roleManager = roleManager;
         }
 
-        public async Task<ApiResponse<RegisterResponse>> CreateUser(RegisterRequest model, string roleName)
+        public async Task<ApiResponse<RegisterResponse>> CreateUser(RegisterRequest model)
         {
             var userEmail = await _userManager.FindByEmailAsync(model.EmailAddress.ToLower().Trim());
 
@@ -55,11 +55,11 @@ namespace Amygdalab.Domain.Managers
 
 
                 Role role = new Role();
-                role.Name = roleName;
+                role.Name = model.role;
 
                 if (result.Succeeded)
                 {
-                    var _role = await _roleManager.FindByNameAsync(roleName);
+                    var _role = await _roleManager.FindByNameAsync(model.role);
                     if (_role == null)
                     {
                         await _roleManager.CreateAsync(role);
@@ -67,13 +67,13 @@ namespace Amygdalab.Domain.Managers
                     }
 
                     // assign role to user 
-                    await _userManager.AddToRoleAsync(user, roleName);
+                    await _userManager.AddToRoleAsync(user, model.role);
 
                     // Add Claims 
                     await _userManager.AddClaimAsync(user, new Claim("UserName", user.UserName));
                     await _userManager.AddClaimAsync(user, new Claim("FirstName", user.FirstName));
                     await _userManager.AddClaimAsync(user, new Claim("EmailAddress", user.Email));
-                    await _userManager.AddClaimAsync(user, new Claim("Role", roleName));
+                    await _userManager.AddClaimAsync(user, new Claim("Role", model.role));
                     await _userManager.AddClaimAsync(user, new Claim("UserId", user.Id.ToString()));
                     Log.Information("Claims added");
                 }

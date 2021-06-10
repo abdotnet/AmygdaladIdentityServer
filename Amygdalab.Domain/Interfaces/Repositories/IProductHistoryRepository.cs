@@ -1,4 +1,6 @@
-﻿using Amygdalab.Data.Entities;
+﻿using Amygdalab.Core.Models;
+using Amygdalab.Core.Utilities;
+using Amygdalab.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,6 @@ namespace Amygdalab.Domain.Interfaces.Repositories
 {
     public interface IProductHistoryRepository : IRepository<ProductHistory>
     {
+        Task<Pager<ProductHistory>> GetAllProductHistoryAsync(SearchModel model);
     }
 }

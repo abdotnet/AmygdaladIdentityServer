@@ -1,0 +1,63 @@
+
+<div class="container">
+<div style="margin-top:100px"></div>
+<div class="row col-md-2">
+<button type="submit" class="btn btn-primary text-center" routerLink='/product' >Add New Product</button>
+ </div>
+<div class= "row col-md-12" style="overflow-x: scroll;" >
+    <!-- table-responsive -->
+    <h5 > Product List</h5>
+    <table class="table table-striped table-bordered row-border table-hover h6" >
+      <thead class="table-active" h6>
+        <tr scope="row">
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col"> Cost Price</th>
+          <th scope="col">Selling Price</th>
+           <th scope="col">Quantity </th>
+          <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+      </thead>
+        <tbody>
+        <tr *ngFor="let item of data | paginate : {
+          itemsPerPage: pageSize,
+          currentPage: page,
+          totalItems: totalItems
+        };
+        let i = index"   >
+          <td >{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.costPrice  | number}}</td>
+          <td>{{item.sellingPrice  | number }}</td>
+          <td>{{item.quantity | number}}</td>
+          <td>{{item.createdOn | date:'MM/dd/yyyy'}}</td>
+           <td><a (click)="deleteProduct(item.id)">Del</a> | <a (click)="editProduct(item.id)">edit</a>  </td>
+        </tr>
+        <tr *ngIf="data?.length === 0" style="text-align:center;">
+          <td colspan="7" >  No record found</td>
+        </tr>
+      </tbody>
+    </table>
+     <div class="col-md-12 d-flex justify-content-center"  *ngIf="data.length > 0">
+      <div class="col-md-6" style="float: left;">
+      <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="handlePageChange($event)"
+       class="my-pagination">
+     </pagination-controls>
+    </div>
+    <div class="col-md-6" style="float: right">
+       Items per Page:
+       <select (change)="handlePageSizeChange($event)">
+         <option *ngFor="let size of pageSizes" >
+           {{ size }}
+         </option>
+       </select>
+      </div>
+    </div>
+   <div>
+   </div>
+
+</div>

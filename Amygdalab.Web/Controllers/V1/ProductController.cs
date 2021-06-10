@@ -3,6 +3,7 @@ using Amygdalab.Core.Contracts.Response;
 using Amygdalab.Core.Models;
 using Amygdalab.Core.Utilities;
 using Amygdalab.Domain.Interfaces.Managers;
+using Amygdalab.Web.Extensions.Identity;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace Amygdalab.Web.Controllers.V1
     [Route("api/v{version:apiVersion}/products")]
     [ApiVersion("1")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseController
     {
 
         private readonly IProductManager _productManager;
@@ -36,15 +37,42 @@ namespace Amygdalab.Web.Controllers.V1
         [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 200)]
         [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 400)]
         [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 401)]
-        [HttpGet()]
-       // [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetAllProducts([FromBody] SearchModel model)
+        [HttpGet("admin")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAllProductsByAdminAsync([FromQuery] SearchModel model)
         {
 
-            Log.Information("Get All product  process started.");
+            Log.Information("Get All product history process started.");
 
             try
             {
+                var response = await _productManager.GetAllProductHistoryAsync(model);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                var error = ApiResponse<RegisterResponse>.Error(null, message: ex.Message);
+                return Ok(error);
+            }
+
+        }
+
+        [MapToApiVersion("1")]
+        [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 400)]
+        [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 401)]
+        [HttpGet()]
+        [Authorize(Roles = "Worker")]
+        public async Task<IActionResult> GetAllProductAsync([FromQuery] SearchModel model)
+        {
+
+            Log.Information("Get All product by user process started.");
+
+            try
+            {
+                model.UserId = User.GetUserId();
                 var response = await _productManager.GetAllProductAsync(model);
 
                 return Ok(response);
@@ -72,7 +100,7 @@ namespace Amygdalab.Web.Controllers.V1
             try
             {
 
-                var response = await _productManager.CreateProductAsync(model, 0);
+                var response = await _productManager.CreateProductAsync(model, User.GetUserId());
 
                 return Ok(response);
             }
@@ -93,13 +121,16 @@ namespace Amygdalab.Web.Controllers.V1
         [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 401)]
         [HttpPut]
         [Authorize(Roles = Constants.RoleTypes.Worker)]
-        public async Task<IActionResult> CreProduct([FromBody] ProductUpdateRequest model)
+        public async Task<IActionResult> EditProduct([FromBody] ProductUpdateRequest model)
         {
 
             Log.Information("Edit product process started.");
 
             try
             {
+                model.ModifiedBy = User.GetUserId();
+                model.ModifiedOn = DateTime.Now;
+
                 var response = await _productManager.EditProductAsync(model);
 
                 return Ok(response);
@@ -118,7 +149,7 @@ namespace Amygdalab.Web.Controllers.V1
         [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 401)]
         [HttpGet("{productId}")]
         [Authorize(Roles = Constants.RoleTypes.Worker)]
-        public async Task<IActionResult> EditProduct([FromQuery] long productId)
+        public async Task<IActionResult> GetProduct(long productId)
         {
 
             Log.Information("Edit product process started.");
@@ -144,7 +175,7 @@ namespace Amygdalab.Web.Controllers.V1
         [ProducesResponseType(typeof(ApiResponse<List<ProductResponse>>), 401)]
         [HttpDelete("{productId}")]
         [Authorize(Roles = Constants.RoleTypes.Worker)]
-        public async Task<IActionResult> DeleteProduct([FromQuery] long productId)
+        public async Task<IActionResult> DeleteProduct(long productId)
         {
 
             Log.Information("Delete product process started.");

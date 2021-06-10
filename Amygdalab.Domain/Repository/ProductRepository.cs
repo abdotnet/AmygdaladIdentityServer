@@ -23,6 +23,10 @@ namespace Amygdalab.Domain.Repository
         {
             var query = _context.Products.OrderByDescending(ord => ord.CreatedOn).AsQueryable();
 
+            if (model.UserId > 0)
+            {
+                query = query.Where(c => c.CreatedBy == model.UserId);
+            }
             PagedList<Product> pageData = await PagedList<Product>.CreateAsync(query, model.PageNumber, model.PageSize);
 
             Pager<Product> pager = new Pager<Product>()
@@ -36,5 +40,6 @@ namespace Amygdalab.Domain.Repository
 
             return pager;
         }
+      
     }
 }

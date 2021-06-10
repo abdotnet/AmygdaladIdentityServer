@@ -155,6 +155,7 @@ namespace Amygdalab.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Home");
             });
 
           
