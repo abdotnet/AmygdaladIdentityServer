@@ -82,8 +82,6 @@ namespace Amygdalab.Web.Extensions
                 .AddInMemoryClients(Config.GetClient(configuration))
                   .AddAspNetIdentity<User>();
 
-
-
             //.AddConfigurationStore(options =>
             //{
             //    options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationAssembly));

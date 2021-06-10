@@ -160,7 +160,13 @@ namespace Amygdalab.Web
 
           
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Amygdalab Product Catalogue v1"));
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Amygdalab Product Catalogue v1");
+                c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+              //  c.RoutePrefix = string.Empty;
+
+            });
 
         }
     }
